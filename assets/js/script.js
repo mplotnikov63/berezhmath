@@ -114,6 +114,45 @@ viewport.addEventListener('mouseleave', () => {
     }
 });
 
+// --- Добавление поддержки свайпов (Touch Events) ---
+let startX = 0;
+let startY = 0;
+let endX = 0;
+let endY = 0;
+
+viewport.addEventListener('touchstart', (e) => {
+    startX = e.touches[0].clientX;
+    startY = e.touches[0].clientY;
+    endX = e.touches[0].clientX;
+    endY = e.touches[0].clientY;
+    stopAutoplay();
+}, { passive: true });
+
+viewport.addEventListener('touchmove', (e) => {
+    endX = e.touches[0].clientX;
+    endY = e.touches[0].clientY;
+}, { passive: true });
+
+viewport.addEventListener('touchend', () => {
+    const thresholdX = 50; // Минимальное расстояние для свайпа по горизонтали
+    const swipeDistanceX = startX - endX;
+    const swipeDistanceY = Math.abs(startY - endY);
+
+    // Слайдим только в том случае, если горизонтальный жест явно преобладает над вертикальным скроллом
+    if (Math.abs(swipeDistanceX) > thresholdX && swipeDistanceY < Math.abs(swipeDistanceX)) {
+        if (swipeDistanceX > 0) {
+            handleManualNavigation(slideNext);
+        } else {
+            handleManualNavigation(slidePrev);
+        }
+    }
+    // Сброс координат
+    startX = 0;
+    startY = 0;
+    endX = 0;
+    endY = 0;
+});
+
 // Пересчет при изменении размера экрана
 window.addEventListener('resize', updateSlider);
 

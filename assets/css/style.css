@@ -716,10 +716,23 @@
 /* Мобильная адаптивность */
 @media (max-width: 968px) {
     .page-header {
-        padding: 15px var(--side-padding);
+        padding: 4px var(--side-padding);
+        justify-content: center; /* Центрируем оставшуюся навигацию */
+    }
+    .page-header__name-logo {
+        display: none; /* Скрываем логотип и имя */
+    }
+    .page-header__btn {
+        display: none; /* Скрываем кнопку "Записаться" */
     }
     .page-header__nav {
-        display: none;
+        display: flex; /* Показываем только навигацию */
+        justify-content: center;
+        gap: 15px;
+        flex-wrap: wrap; /* Чтобы ссылки не вылезали на очень узких экранах */
+    }
+    .page-header__link {
+        font-size: 16px;
     }
     .hero-section {
         flex-direction: column-reverse;
@@ -746,5 +759,55 @@
     .reviews-section__card {
         width: 280px;
         flex: 0 0 280px;
+    }
+}
+
+/* Планшеты и телефоны: убираем кнопки слайдера и настраиваем карточки */
+@media (max-width: 768px) {
+    .reviews-section__nav-btn {
+        display: none; /* Скрываем стрелки */
+    }
+    .reviews-section__slider {
+        padding: 0 10px;
+    }
+    .reviews-section__track {
+        gap: 15px;
+    }
+    .reviews-section__card {
+        width: 290px;
+        flex: 0 0 290px;
+    }
+}
+
+/* Маленькие экраны телефонов: предотвращаем переполнение почты и подгоняем карточки */
+@media (max-width: 480px) {
+    .reviews-section__card {
+        width: 270px;
+        flex: 0 0 270px;
+        padding: 20px 15px;
+    }
+    .contact-section__method {
+        padding: 12px 15px; /* Уменьшаем внутренние отступы */
+        gap: 8px;
+    }
+    .contact-section__method-left {
+        gap: 10px;
+        min-width: 0; /* Позволяет дочерним элементам сжиматься */
+        flex: 1;
+    }
+    .contact-section__link {
+        font-size: 13px; /* Слегка уменьшаем шрифт для идеального вхождения */
+        word-break: break-all; /* Автоматический перенос почты, если экран экстремально узкий */
+    }
+    .contact-section__copy-btn {
+        flex-shrink: 0; /* Кнопка копирования не будет сжиматься */
+    }
+    .contact-section__icon--phone, 
+    .contact-section__icon--telegram, 
+    .contact-section__icon--email, 
+    .contact-section__copy-icon {
+        width: 24px;
+        height: 24px;
+        flex-shrink: 0;
     }
 }
