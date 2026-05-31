@@ -182,7 +182,7 @@ copyButtons.forEach(button => {
         });
     });
 });
-/* 2. Обновление стилей в кэше */
+/* 3. Обновление стилей в кэше */
 function reloadCSS() {
     const links = document.querySelectorAll('link[rel="stylesheet"]');
     links.forEach(link => {
@@ -192,3 +192,4 @@ function reloadCSS() {
         link.href = url.toString();
     });
 }
+reloadCSS();
