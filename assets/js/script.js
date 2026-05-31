@@ -99,7 +99,7 @@ prevBtn.addEventListener('click', () => {
     handleManualNavigation(slidePrev);
 });
 
-// Пауза при наведении мыши (чтобы пользователь мог спокойно прочитать отзыв)
+// Пауза при наведении мыши 
 viewport.addEventListener('mouseenter', () => {
     // Останавливаем только если не активна пауза от клика по кнопке
     if (!resumeTimer) {
@@ -138,7 +138,6 @@ viewport.addEventListener('touchend', () => {
     const swipeDistanceX = startX - endX;
     const swipeDistanceY = Math.abs(startY - endY);
 
-    // Слайдим только в том случае, если горизонтальный жест явно преобладает над вертикальным скроллом
     if (Math.abs(swipeDistanceX) > thresholdX && swipeDistanceY < Math.abs(swipeDistanceX)) {
         if (swipeDistanceX > 0) {
             handleManualNavigation(slideNext);
@@ -183,3 +182,13 @@ copyButtons.forEach(button => {
         });
     });
 });
+/* 2. Обновление стилей в кэше */
+function reloadCSS() {
+    const links = document.querySelectorAll('link[rel="stylesheet"]');
+    links.forEach(link => {
+        const url = new URL(link.href, window.location.href);
+        // Добавляем или обновляем параметр версии (timestamp)
+        url.searchParams.set('reload_t', Date.now());
+        link.href = url.toString();
+    });
+}

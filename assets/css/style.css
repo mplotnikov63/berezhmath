@@ -54,13 +54,13 @@
     top: 0;
     left: 0;
     width: 100%;
-    padding: 20px var(--side-padding); /* Использование переменной */
+    padding: 20px var(--side-padding);
     display: flex;
     justify-content: space-between;
     align-items: center;
     background: rgba(243, 239, 255, 0.82);
     border-bottom: 1px solid rgba(255, 255, 255, 0.4);
-    z-index: 100; /* Добавлен z-index, чтобы шапка была всегда сверху */
+    z-index: 100;
 }
 
 .page-header__name-logo {
@@ -117,7 +117,7 @@
     transform: translateY(-2px);
 }
 
-/* Анимация "живого" фона */
+/* Анимация живого фона */
 @keyframes aliveBackground {
     0% { transform: scale(1.03) translate(0, 0); }
     50% { transform: scale(1.08) translate(-1%, -1%); }
@@ -127,7 +127,7 @@
 /* Первый экран */
 .hero-section {
     min-height: 100vh;
-    padding: 150px var(--side-padding) 80px; /* Использование переменной */
+    padding: 150px var(--side-padding) 80px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -225,7 +225,7 @@
 
 /* Обо мне */
 .about-section {
-    padding: 100px var(--side-padding); /* Использование переменной */
+    padding: 100px var(--side-padding);
     background-color: var(--color-white);
     display: flex;
     align-items: center;
@@ -310,7 +310,7 @@
 
 /* Направления и цены */
 .programs-section {
-    padding: 100px var(--side-padding); /* Использование переменной */
+    padding: 100px var(--side-padding);
     text-align: center;
 }
 
@@ -424,7 +424,7 @@
     font-size: 36px;
     font-weight: 700;
     margin-bottom: 50px;
-    padding: 0 var(--side-padding); /* Использование переменной */
+    padding: 0 var(--side-padding);
 }
 
 .reviews-section__slider {
@@ -547,7 +547,7 @@
 }
 /* Контакты */
 .contact-section {
-    padding: 100px var(--side-padding); /* Использование переменной */
+    padding: 100px var(--side-padding);
     position: relative;
     overflow: hidden;
     display: flex;
@@ -695,7 +695,7 @@
 .page-footer {
     background-color: var(--color-primary-dark);
     color: rgba(255, 255, 255, 0.8);
-    padding: 40px var(--side-padding); /* Использование переменной */
+    padding: 40px var(--side-padding);
     text-align: center;
 }
 
@@ -706,7 +706,7 @@
 
 /* --- Адаптивность --- */
 
-/* При ширине экрана 1080px и меньше уменьшаем боковые отступы до 2% */
+/* При ширине экрана 1080px и меньше*/
 @media (max-width: 1080px) {
     :root {
         --side-padding: 2%;
@@ -717,16 +717,16 @@
 @media (max-width: 968px) {
     .page-header {
         padding: 4px var(--side-padding);
-        justify-content: center; /* Центрируем оставшуюся навигацию */
+        justify-content: center;
     }
     .page-header__name-logo {
-        display: none; /* Скрываем логотип и имя */
+        display: none;
     }
     .page-header__btn {
-        display: none; /* Скрываем кнопку "Записаться" */
+        display: none;
     }
     .page-header__nav {
-        display: flex; /* Показываем только навигацию */
+        display: flex;
         justify-content: center;
         gap: 15px;
         flex-wrap: wrap; /* Чтобы ссылки не вылезали на очень узких экранах */
@@ -748,13 +748,18 @@
     }
     .about-section {
         flex-direction: column;
-        padding: 60px var(--side-padding);
+        padding: 20px var(--side-padding);
+        padding-bottom: 40px;
+        gap: 10px;
     }
     .programs-section, .contact-section {
-        padding: 60px var(--side-padding);
+        padding: 20px var(--side-padding);
     }
     .contact-section__container {
         padding: 30px 20px;
+    }
+    .reviews-section{
+        padding: 30px 0;
     }
     .reviews-section__card {
         width: 280px;
@@ -762,10 +767,10 @@
     }
 }
 
-/* Планшеты и телефоны: убираем кнопки слайдера и настраиваем карточки */
+/* Планшеты и телефоны*/
 @media (max-width: 768px) {
     .reviews-section__nav-btn {
-        display: none; /* Скрываем стрелки */
+        display: none;
     }
     .reviews-section__slider {
         padding: 0 10px;
@@ -779,7 +784,7 @@
     }
 }
 
-/* Маленькие экраны телефонов: предотвращаем переполнение почты и подгоняем карточки */
+/* Маленькие экраны телефонов*/
 @media (max-width: 480px) {
     .reviews-section__card {
         width: 270px;
@@ -792,7 +797,7 @@
     }
     .contact-section__method-left {
         gap: 10px;
-        min-width: 0; /* Позволяет дочерним элементам сжиматься */
+        min-width: 0;
         flex: 1;
     }
     .contact-section__link {
